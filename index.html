@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Visualization</title>
+<meta charset="iso-8859-1">
+<link rel="stylesheet" href="styles/layout.css" type="text/css">
+<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="#">Visualization Project for MovieLen</a></h1>
+      <p/>
+      <h2>Mia Jia</h2>
+      <br/>
+    </div>
+  </header>
+</div>
+
+<div id="content">
+    <ul>
+        <article class="clear">
+            <!--<figcaption>-->
+              <p>This project is based on <a href="http://grouplens.org/datasets/movielens/">MovieLen Dataset</a>,
+                html5 d3.js, jQuery and mySQL.
+                The MovieLen data records one million ratings given by 6000 users on 4000 movies.</p>
+              <p> The data visualization app will help addressing the question regarding "what kind of movie people love most in California or Utah?",  "how age and gender differences affect the choice of different genres of movies?" by providing mutiple visualization representation of the dataset with interactive filtering support.
+             </p><p>
+              For the user view, you can see all movie ratings given by one selected user.
+              </p>
+              For the movie view, the chart shows all the users who have rated the selected movie</p>
+              <p>Have fun!</p>
+            <!--</figcaption>-->
+        </article>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <div>
+      <h2>User View</h2>
+      <label for="userSelect0">Select a UserID</label>
+      <select name="User" id="userSelect0" onchange="userViewSelectMenu.changeUser()">
+        <option selected="selected">1</option>
+      </select>
+      <label for="xAxisSelect0">Select x axis</label>
+      <select name="xAxisSelect" id="xAxisSelect0" onchange="userViewSelectMenu.changeX()">
+        <option selected="selected">movieID</option>
+        <option>genre</option>
+        <option>year</option>
+      </select>
+      <label for="yAxisSelect0">Select y axis</label>
+      <select name="avgNumSelect" id="yAxisSelect0" onchange="userViewSelectMenu.changeY()">
+        <option selected="selected">rating</option>
+        <option>recordNum</option>
+      </select>
+      <label for="chartType0">Select Chart Type</label>
+      <select name="chartTypeSelect" id="chartType0" onchange="userViewSelectMenu.changeOrder()">
+        <option class="barChart" selected="selected">Bar Chart</option>
+        <option class="boxPlot">Box Plot</option>
+        <option class="treeMap">Tree Map</option>
+        <option class="pieChart">Pie Chart</option>
+        <option class="lineChart">Point Chart</option>
+      </select>
+      <label for="sortSelect0" id="label_sortSelect0">Select Order</label>
+      <select name="sortSelect" id="sortSelect0" onchange="userViewSelectMenu.changeOrder()">
+        <option class="origin" selected="selected">Original Order</option>
+        <option class="asc">Ascending Order</option>
+        <option class="desc">Descending Order</option>
+      </select>
+      <br/>
+      <br/>
+      <svg id="userView" width="1000" height="400">
+      </svg>
+    </div>
+
+      <br/>
+      <br/>
+
+    <div>
+      <h2>Movie View</h2>
+      <label for="movieSelect1">Select a MovieID</label>
+      <select name="Movie" id="movieSelect1" onchange="movieViewSelectMenu.changeMovie()">
+        <option selected="selected">1</option>
+      </select>
+      <label for="xAxisSelect1">Select x axis</label>
+      <select name="xAxisSelect" id="xAxisSelect1" onchange="movieViewSelectMenu.changeX()">
+        <option>sex</option>
+        <option selected="selected">state</option>
+        <option>age</option>
+      </select>
+      <label for="yAxisSelect1">Select y axis</label>
+      <select name="avgNumSelect" id="yAxisSelect1" onchange="movieViewSelectMenu.changeY()">
+        <option>rating</option>
+        <option selected="selected">recordNum</option>
+      </select>
+      <label for="chartType1">Select Chart Type</label>
+      <select name="chartTypeSelect" id="chartType1" onchange="movieViewSelectMenu.changeChart()">
+        <option class="barChart">Bar Chart</option>
+        <option class="boxPlot">Box Plot</option>
+        <option class="treeMap" selected="selected">Tree Map</option>
+        <option class="pieChart">Pie Chart</option>
+        <option class="geoMap">Geo Map</option>
+        <option class="lineChart">Point Chart</option>
+      </select>
+      <label for="sortSelect1" id="label_sortSelect1">Select Order</label>
+      <select name="sortSelect" id="sortSelect1" onchange="movieViewSelectMenu.changeOrder()">
+        <option class="origin" selected="selected">Original Order</option>
+        <option class="asc">Ascending Order</option>
+        <option class="desc">Descending Order</option>
+      </select>
+      <br/>
+      <br/>
+      <svg id="movieView" width="1000" height="400">
+      </svg>
+    </div>
+
+  </div>
+</div>
+
+<script src="http://www.d3plus.org/js/d3.js"></script>
+<script src="http://www.d3plus.org/js/d3plus.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="http://www.d3plus.org/js/topojson.js"></script>
+<script src="js/typeConversion.js"></script>>
+<script src="js/userView.js"></script>
+<script src="js/userSelectMenu.js"></script>
+<script src="js/movieView.js"></script>
+<script src="js/movieSelectMenu.js"></script>
+<script src="js/loadData.js"></script>
+</body>
+</html>
